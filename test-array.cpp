@@ -10,15 +10,15 @@ void t_true(bool p){ if (!p) FAIL();}
 void t_false(bool p){ if (p) FAIL(); }
 
 void testArrayCreation() {
-    Array* a1 = new Array(5);
-    Array* a2 = new Array(10);
+    Array* a1 = new Array("String", 5);
+    Array* a2 = new Array("Object", 10);
     t_true(a1->get_length()==5);
     t_true(a2->get_length()==10);
 }
 
 void testAppend(){
-    Array* a1 = new Array(2);
-    Array* a2 = new Array(3);
+    Array* a1 = new Array("String", 2);
+    Array* a2 = new Array("String", 3);
     String* x = new String(new char[1]);
     String* y = new String(new char[2]);
     a1->fill(x);
@@ -28,7 +28,7 @@ void testAppend(){
 }
 
 void testAccessElements() {
-    Array* a1 = new Array(3);
+    Array* a1 = new Array("String", 3);
     String* n = new String("n");
     String* o = new String("o");
     String* p = new String("p");
@@ -41,7 +41,7 @@ void testAccessElements() {
     t_true(a1->at(0)->equals(a1->front()));
     t_true(a1->at(2)->equals(a1->back()));
     t_true(a1->contains(n));
-    Array* a2 = new Array(2);
+    Array* a2 = new Array("Object", 2);
     Object* obj = new Object();
     a2->put(0, obj);
     t_true(a2->at(0)->equals(obj));
@@ -86,5 +86,6 @@ int main()
     testAccessElements();
     testHash();
     testString();
+    testSubstring();
     return 0;
 }
