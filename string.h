@@ -37,6 +37,9 @@ public:
     // Returns the substring starting at the index and ending at the index.
     String* substring(int beginIdx, int endIdx);
 
+    // Returns "String", represents the class type.
+    const char* get_class();
+
     // Prints the string on stdout.
     void print();
 };
