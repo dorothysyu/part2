@@ -4,7 +4,7 @@
 class String : public Object {
 public:
     char* val_; // data
-    long size_; // number of chars (excluding \0)
+    size_t size_; // number of chars (excluding \0)
     
     // Constructor
     String(char* chars);
@@ -25,11 +25,17 @@ public:
     int compare(String* other);
 
     // Returns a hash of the string
-    long hash_me();
+    size_t hash_me();
 
     // Returns a new string that is a concatenation of this
     // string with the other string.
     String* concat(String* other);
+
+    // Returns the substring starting at the index.
+    String* substring(int beginIdx);
+
+    // Returns the substring starting at the index and ending at the index.
+    String* substring(int beginIdx, int endIdx);
 
     // Prints the string on stdout.
     void print();

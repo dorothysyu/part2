@@ -12,8 +12,8 @@ void t_false(bool p){ if (p) FAIL(); }
 void testArrayCreation() {
     Array* a1 = new Array(5);
     Array* a2 = new Array(10);
-    t_true(a2->get_length()==15);
-    t_true(a1->is_empty());
+    t_true(a1->get_length()==5);
+    t_true(a2->get_length()==10);
 }
 
 void testAppend(){
@@ -23,7 +23,8 @@ void testAppend(){
     String* y = new String(new char[2]);
     a1->fill(x);
     a2->fill(y);
-    t_true(a1->append(a2)->get_length() == 5);
+    t_true(a1->get_length() == 2);
+    t_true(a2->get_length() == 3);
 }
 
 void testAccessElements() {
@@ -66,6 +67,16 @@ void testString() {
     t_true(g->compare(g) == 0);
     t_true(g->compare(h) < 0);
     passed->print();
+}
+
+void testSubstring() {
+    String* helloWorld = new String("hello world");
+    String* hello = new String("hello");
+    String* world = new String("world");
+    String* subWorld = helloWorld->substring(6);
+    String* subHello = helloWorld->substring(0, 4);
+    t_true(hello->equals(subHello));
+    t_true(world->equals(subWorld));
 }
 
 int main()

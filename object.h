@@ -1,4 +1,5 @@
 //lang::CwC
+#include <stdlib.h>
 class Object
 {
 public:
@@ -9,10 +10,10 @@ public:
     virtual ~Object();
 
     // Returns a hash of the object.
-    virtual long get_hash();
+    virtual size_t get_hash();
 
     // Computes the object's hash.
-    virtual long hash_me();
+    virtual size_t hash_me();
 
     // Checks for equality (same data but two different obj)
     virtual bool equals(Object* other);

@@ -22,9 +22,6 @@ public:
     // Access last element.
     Object* back();
 
-    // Returns whether or not the array is empty.
-    bool is_empty();
-
     // TODO: rename? this seems more like a hashmap naming convention than 
     // array
     // Puts the obj at the ith index. Replaces the object that
@@ -33,10 +30,6 @@ public:
 
     // Fills the array with the given value.
     void fill(Object* val);
-
-    // Returns a new array that is
-    // the given array appended to this one.
-    Array* append(Array* newArray);
 
     // Determines whether or not this array contains the obj.
     bool contains(Object* obj);

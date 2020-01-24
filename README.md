@@ -1,0 +1,6 @@
+We decided to use an Array implementation as the data structure to support having different types.
+The Array class supports basic functionality, like Array creation, deletion, putting an element at an index, accessing elements, and checking whether an array contains a given element. The methods that return elements return Object pointers - this is because we are assuming that all data types will be inheriting from the Object class. If someone wants to support an array of a new data type, all they would have to do is create a new class that inherits the Object class
+
+The Object class methods are mostly virtual so that inheriting classes can override it. It supports functionality like Object creation, deletion, hashing, checking for equality and identity, and getting the class type of the object.
+
+The String class supports functionality like String creation, deletion, all of the methods in the Object class, and additional functionality, including concatenating strings, printing, and getting the substring of a string.
