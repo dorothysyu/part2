@@ -51,6 +51,18 @@ void testAccessElements() {
     CS4500_ASSERT_TRUE(a2->contains(obj));
 }
 
+void testArrayEquality() {
+    Array* a1 = new Array("String", 2);
+    Array* a2 = new Array("String", 2);
+    Array* a3 = new Array("Object", 2);
+    String* n = new String("n");
+    a1->fill(n);
+    a2->fill(n);
+    CS4500_ASSERT_TRUE(a1->hash()==a2->hash());
+    CS4500_ASSERT_TRUE(a1->equals(a2));
+    CS4500_ASSERT_FALSE(a1->equals(a3));
+}
+
 void testHash() {
     Object* obj1 = new Object();
     String* f = new String("f");
@@ -69,7 +81,7 @@ void testString() {
     CS4500_ASSERT_TRUE(g->cmp(h) < 0);
 }
 
-void testSize() {
+void testStringSize() {
     String* hello_world = new String("hello world");
     String* hello_world2 = new String(hello_world);
     CS4500_ASSERT_TRUE(hello_world->size()==11);
@@ -81,8 +93,9 @@ int main()
     testArrayCreation();
     testAppend();
     testAccessElements();
+    testArrayEquality();
     testHash();
     testString();
-    testSize();
+    testStringSize();
     return 0;
 }

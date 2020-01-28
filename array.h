@@ -1,6 +1,6 @@
 //lang::CwC
 #include "object.h"
-class Array{
+class Array : public Object{
 public:
     const char* type; // Represents what type the Array is.
     int length; // the length of the array
@@ -34,4 +34,10 @@ public:
 
     // Determines whether or not this array contains the obj.
     bool contains(Object* obj);
+
+    // Returns this Array's hash value.
+    size_t hash();
+
+    // Compares the contents of the arrays to see if they are equal.
+    bool equals(Object* other);
 };
