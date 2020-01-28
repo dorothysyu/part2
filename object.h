@@ -1,26 +1,28 @@
 //lang::CwC
-#include <stdlib.h>
-class Object
-{
+#pragma once
+
+#include <cstdlib>
+
+/**
+ * This API was taken from https://github.com/chasebish/cwc_object_string
+ * in the interest of keeping object and string APIs consistent throughout the class.
+ * A class that represents the top of the object hierarchy.
+ * author: chasebish */
+class Object {
 public:
-    // Constructor
-    Object();
+  /** CONSTRUCTORS & DESTRUCTORS **/
 
-    // Deconstructor (deletes object and frees its data)
-    virtual ~Object();
+  /* Default Object constructor */
+  Object();
 
-    // Returns a hash of the object.
-    virtual size_t get_hash();
+  /* Default Object destructor, to be overriden by subclasses */
+  virtual ~Object();
 
-    // Computes the object's hash.
-    virtual size_t hash_me();
+  /** VIRTUAL METHODS **/
 
-    // Checks for equality (same data but two different obj)
-    virtual bool equals(Object* other);
+  /* Returns whether two objects are equal, to be overriden by subclasses */
+  virtual bool equals(Object* const obj);
 
-    // Checks if the given object points to the same address as this
-    virtual bool identical(Object* other);
-
-    // Returns a string representing what type the object is.
-    virtual const char* get_class();
+  /* Returns an object's hash value. Identical objects should have identical hashes */
+  virtual size_t hash();
 };

@@ -55,10 +55,8 @@ void testHash() {
     Object* obj1 = new Object();
     String* f = new String("f");
     String* f2 = new String("f");
-    CS4500_ASSERT_TRUE(obj1->hash_me()==obj1->get_hash());
-    CS4500_ASSERT_TRUE(f->hash_me()==f2->hash_me());
-    CS4500_ASSERT_TRUE(f->identical(f));
-    CS4500_ASSERT_TRUE(f->identical(f2));
+    CS4500_ASSERT_TRUE(obj1->hash()==obj1->hash());
+    CS4500_ASSERT_TRUE(f->hash()==f2->hash());
 }
 
 void testString() {
@@ -67,19 +65,15 @@ void testString() {
     String* gh = new String("gh");
     String* passed = new String("passed");
     CS4500_ASSERT_TRUE(g->concat(h)->equals(gh));
-    CS4500_ASSERT_TRUE(g->compare(g) == 0);
-    CS4500_ASSERT_TRUE(g->compare(h) < 0);
-    passed->print();
+    CS4500_ASSERT_TRUE(g->cmp(g) == 0);
+    CS4500_ASSERT_TRUE(g->cmp(h) < 0);
 }
 
-void testSubstring() {
-    String* helloWorld = new String("hello world");
-    String* hello = new String("hello");
-    String* world = new String("world");
-    String* subWorld = helloWorld->substring(6);
-    String* subHello = helloWorld->substring(0, 4);
-    CS4500_ASSERT_TRUE(hello->equals(subHello));
-    CS4500_ASSERT_TRUE(world->equals(subWorld));
+void testSize() {
+    String* hello_world = new String("hello world");
+    String* hello_world2 = new String(hello_world);
+    CS4500_ASSERT_TRUE(hello_world->size()==11);
+    CS4500_ASSERT_TRUE(hello_world2->size()==11);
 }
 
 int main()
@@ -89,6 +83,6 @@ int main()
     testAccessElements();
     testHash();
     testString();
-    testSubstring();
+    testSize();
     return 0;
 }

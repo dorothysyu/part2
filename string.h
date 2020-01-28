@@ -1,45 +1,50 @@
-#include "object.h"
+//lang::CwC
+#pragma once
 
-/* Represents a string object. Many stubs taken from @166 on Piazza.*/
+#include "object.h"
+#include <cstdlib>
+#include <cstring>
+#include <cstdio> 
+
+/**
+ * This API was taken from https://github.com/chasebish/cwc_object_string
+ * in the interest of keeping object and string APIs consistent throughout the class.
+ * author: chasebish */
 class String : public Object {
 public:
-    char* val_; // data
-    size_t size_; // number of chars (excluding \0)
-    
-    // Constructor
-    String(char* chars);
+  /** CONSTRUCTORS & DESTRUCTORS **/
 
-    // Constructor
-    String(const char* chars);
+  /* Creates a String copying s */
+  String(const char* s);
 
-    // Deletes the string
-    ~String();
+  /* Copies a String copying the value from s */
+  String(String* const s);
 
-    // Compares strings for equality
-    bool equals(String* other);
+  /* Clears String from memory */
+  ~String();
 
-    // Compares two strings.
-    // Returns 0 if strings are equal, 
-    // >0 if this string is larger than other,
-    // <0 otherwise.
-    int compare(String* other);
 
-    // Returns a hash of the string
-    size_t hash_me();
+  /** INHERITED METHODS **/
 
-    // Returns a new string that is a concatenation of this
-    // string with the other string.
-    String* concat(String* other);
+  /* Inherited from Object, generates a hash for a String */
+  size_t hash();
 
-    // Returns the substring starting at the index.
-    String* substring(int beginIdx);
+  /* Inherited from Object, checks equality between an String and an Object */
+  bool equals(Object* const obj);
 
-    // Returns the substring starting at the index and ending at the index.
-    String* substring(int beginIdx, int endIdx);
 
-    // Returns "String", represents the class type.
-    const char* get_class();
+  /** STRING METHODS **/
+  
+  /** Compares strings based on alphabetical order
+   * < 0 -> this String is less than String s
+   * = 0 -> this String is equal to String s
+   * > 0 -> this String is greater than String s
+   */
+  int cmp(String* const s);
 
-    // Prints the string on stdout.
-    void print();
+  /* Creates a new String by combining two existing Strings */
+  String* concat(String* const s);
+
+  /* Returns the current length of the String */
+  size_t size();
 };
