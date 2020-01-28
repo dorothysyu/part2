@@ -1,19 +1,22 @@
-//lang::CwC
-#include <stdio.h>
-#include "array.h"
-#include "object.h"
-#include "string.h"
+#include <gtest/gtest.h>
 
-void FAIL() { exit(1); }
-void OK(const char *m) { printf("%s\n", m); /** print m */ }
-void t_true(bool p){ if (!p) FAIL();}
-void t_false(bool p){ if (p) FAIL(); }
+#include "../object.h" 
+#include "../string.h"
+#include "../array.h"
+
+#define CS4500_ASSERT_TRUE(a)  \
+  ASSERT_EQ((a),true);
+#define CS4500_ASSERT_FALSE(a) \
+  ASSERT_EQ((a),false);
+#define CS4500_ASSERT_EXIT_ZERO(a)  \
+  ASSERT_EXIT(a(), ::testing::ExitedWithCode(0), ".*");
 
 void testArrayCreation() {
     Array* a1 = new Array("String", 5);
     Array* a2 = new Array("Object", 10);
-    t_true(a1->get_length()==5);
-    t_true(a2->get_length()==10);
+    CS4500_ASSERT_TRUE(a1->get_length()==5);
+    CS4500_ASSERT_TRUE(a2->get_length()==10);
+    exit(0);
 }
 
 void testAppend(){
@@ -23,8 +26,8 @@ void testAppend(){
     String* y = new String(new char[2]);
     a1->fill(x);
     a2->fill(y);
-    t_true(a1->get_length() == 2);
-    t_true(a2->get_length() == 3);
+    CS4500_ASSERT_TRUE(a1->get_length() == 2);
+    CS4500_ASSERT_TRUE(a2->get_length() == 3);
 }
 
 void testAccessElements() {
@@ -35,27 +38,27 @@ void testAccessElements() {
     a1->put(0, n);
     a1->put(1, o);
     a1->put(2, p);
-    t_true(a1->at(0)->equals(n));
-    t_true(a1->at(0)->equals(n));
-    t_true(a1->at(1)->equals(o));
-    t_true(a1->at(0)->equals(a1->front()));
-    t_true(a1->at(2)->equals(a1->back()));
-    t_true(a1->contains(n));
+    CS4500_ASSERT_TRUE(a1->at(0)->equals(n));
+    CS4500_ASSERT_TRUE(a1->at(0)->equals(n));
+    CS4500_ASSERT_TRUE(a1->at(1)->equals(o));
+    CS4500_ASSERT_TRUE(a1->at(0)->equals(a1->front()));
+    CS4500_ASSERT_TRUE(a1->at(2)->equals(a1->back()));
+    CS4500_ASSERT_TRUE(a1->contains(n));
     Array* a2 = new Array("Object", 2);
     Object* obj = new Object();
     a2->put(0, obj);
-    t_true(a2->at(0)->equals(obj));
-    t_true(a2->contains(obj));
+    CS4500_ASSERT_TRUE(a2->at(0)->equals(obj));
+    CS4500_ASSERT_TRUE(a2->contains(obj));
 }
 
 void testHash() {
     Object* obj1 = new Object();
     String* f = new String("f");
     String* f2 = new String("f");
-    t_true(obj1->hash_me()==obj1->get_hash());
-    t_true(f->hash_me()==f2->hash_me());
-    t_true(f->identical(f));
-    t_false(f->identical(f2));
+    CS4500_ASSERT_TRUE(obj1->hash_me()==obj1->get_hash());
+    CS4500_ASSERT_TRUE(f->hash_me()==f2->hash_me());
+    CS4500_ASSERT_TRUE(f->identical(f));
+    CS4500_ASSERT_TRUE(f->identical(f2));
 }
 
 void testString() {
@@ -63,9 +66,9 @@ void testString() {
     String* h = new String("h");
     String* gh = new String("gh");
     String* passed = new String("passed");
-    t_true(g->concat(h)->equals(gh));
-    t_true(g->compare(g) == 0);
-    t_true(g->compare(h) < 0);
+    CS4500_ASSERT_TRUE(g->concat(h)->equals(gh));
+    CS4500_ASSERT_TRUE(g->compare(g) == 0);
+    CS4500_ASSERT_TRUE(g->compare(h) < 0);
     passed->print();
 }
 
@@ -75,8 +78,8 @@ void testSubstring() {
     String* world = new String("world");
     String* subWorld = helloWorld->substring(6);
     String* subHello = helloWorld->substring(0, 4);
-    t_true(hello->equals(subHello));
-    t_true(world->equals(subWorld));
+    CS4500_ASSERT_TRUE(hello->equals(subHello));
+    CS4500_ASSERT_TRUE(world->equals(subWorld));
 }
 
 int main()

@@ -1,0 +1,10 @@
+*.swp
+test/CMakeFiles
+test/googletest-build
+test/googletest-download
+test/googletest-src
+test/lib
+test/CMakeCache.txt
+test/Makefile
+test/cmake_install.cmake
+.vscode/
