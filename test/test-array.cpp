@@ -19,6 +19,17 @@ void testArrayCreation() {
     exit(0);
 }
 
+void testGrowth() {
+    Array* a1 = new Array("Object", 1);
+    Object* obj = new Object();
+    CS4500_ASSERT_TRUE(a1->get_length() == 1);
+    a1->push(obj);
+    a1->push(obj);
+    a1->push(obj);
+    a1->push(obj);
+    CS4500_ASSERT_TRUE(a1->get_length() > 1);
+}
+
 void testAppend(){
     Array* a1 = new Array("String", 2);
     Array* a2 = new Array("String", 3);
@@ -91,6 +102,7 @@ void testStringSize() {
 int main()
 {
     testArrayCreation();
+    testGrowth();
     testAppend();
     testAccessElements();
     testArrayEquality();

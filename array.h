@@ -3,9 +3,8 @@
 class Array : public Object{
 public:
     const char* type; // Represents what type the Array is.
-    int length; // the length of the array
 
-    // Constructs a fixed-size array with the given length.
+    // Constructs a growable array with the given length.
     Array(const char* type, int length);
 
     // Default deconstructor.
@@ -27,6 +26,9 @@ public:
     // If it is, puts the obj at the ith index. Replaces the object
     // that was already there if it exists.
     void put(int i, Object* obj);
+
+    // Adds the given object to the array.
+    void push(Object* obj);
 
     // Fills the array with the given value if the type of the object matches
     // the already existing type.
