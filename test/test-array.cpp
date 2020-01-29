@@ -3,6 +3,10 @@
 #include "../object.h" 
 #include "../string.h"
 #include "../array.h"
+#include "../string_array.h"
+#include "../float_array.h"
+#include "../int_array.h"
+#include "../bool_array.h"
 
 #define CS4500_ASSERT_TRUE(a)  \
   ASSERT_EQ((a),true);
@@ -12,15 +16,15 @@
   ASSERT_EXIT(a(), ::testing::ExitedWithCode(0), ".*");
 
 void testArrayCreation() {
-    Array* a1 = new Array("String", 5);
-    Array* a2 = new Array("Object", 10);
+    Array* a1 = new Array(5);
+    Array* a2 = new Array(10);
     CS4500_ASSERT_TRUE(a1->get_length()==5);
     CS4500_ASSERT_TRUE(a2->get_length()==10);
     exit(0);
 }
 
 void testGrowth() {
-    Array* a1 = new Array("Object", 1);
+    Array* a1 = new Array(1);
     Object* obj = new Object();
     CS4500_ASSERT_TRUE(a1->get_length() == 1);
     a1->push(obj);
@@ -30,9 +34,9 @@ void testGrowth() {
     CS4500_ASSERT_TRUE(a1->get_length() > 1);
 }
 
-void testAppend(){
-    Array* a1 = new Array("String", 2);
-    Array* a2 = new Array("String", 3);
+void testLength(){
+    String_Array* a1 = new String_Array(2);
+    String_Array* a2 = new String_Array(3);
     String* x = new String(new char[1]);
     String* y = new String(new char[2]);
     a1->fill(x);
@@ -42,36 +46,27 @@ void testAppend(){
 }
 
 void testAccessElements() {
-    Array* a1 = new Array("String", 3);
-    String* n = new String("n");
-    String* o = new String("o");
-    String* p = new String("p");
-    a1->put(0, n);
-    a1->put(1, o);
-    a1->put(2, p);
-    CS4500_ASSERT_TRUE(a1->at(0)->equals(n));
-    CS4500_ASSERT_TRUE(a1->at(0)->equals(n));
-    CS4500_ASSERT_TRUE(a1->at(1)->equals(o));
-    CS4500_ASSERT_TRUE(a1->at(0)->equals(a1->front()));
-    CS4500_ASSERT_TRUE(a1->at(2)->equals(a1->back()));
-    CS4500_ASSERT_TRUE(a1->contains(n));
-    Array* a2 = new Array("Object", 2);
-    Object* obj = new Object();
-    a2->put(0, obj);
-    CS4500_ASSERT_TRUE(a2->at(0)->equals(obj));
-    CS4500_ASSERT_TRUE(a2->contains(obj));
+    Int_Array* a1 = new Int_Array(3);
+    a1->put(0, 70);
+    a1->put(1, 80);
+    CS4500_ASSERT_TRUE(a1->at(0) == 70);
+    CS4500_ASSERT_TRUE(a1->at(1) == 80);
+    CS4500_ASSERT_TRUE(a1->contains(70));
+    Float_Array* a2 = new Float_Array(2);
+    a2->put(0, 1.0);
+    CS4500_ASSERT_TRUE(a2->at(0) == 1.0);
+    CS4500_ASSERT_TRUE(a2->contains(1.0));
 }
 
 void testArrayEquality() {
-    Array* a1 = new Array("String", 2);
-    Array* a2 = new Array("String", 2);
-    Array* a3 = new Array("Object", 2);
-    String* n = new String("n");
-    a1->fill(n);
-    a2->fill(n);
+    Bool_Array* a1 = new Bool_Array(2);
+    Bool_Array* a2 = new Bool_Array(2);
+    Bool_Array* a3 = new Bool_Array(3);
+    bool t = 1;
+    a1->fill(t);
+    a2->fill(t);
     CS4500_ASSERT_TRUE(a1->hash()==a2->hash());
     CS4500_ASSERT_TRUE(a1->equals(a2));
-    CS4500_ASSERT_FALSE(a1->equals(a3));
 }
 
 void testHash() {
@@ -103,7 +98,7 @@ int main()
 {
     testArrayCreation();
     testGrowth();
-    testAppend();
+    testLength();
     testAccessElements();
     testArrayEquality();
     testHash();
