@@ -24,7 +24,10 @@ class String_Array : public Array {
     // Adds the given string to the array.
     void push(String* str);
 
-    // Fills the array with the given value.
+    // Sets val as the value for all the elements in the array object.
+    // Does nothing for an empty array
+    // If it's partially filled/full, replace already-existing values with the given value.
+    // Creates a deep copy of the String.
     void fill(String* str);
 
     // Determines whether or not this array contains the obj.

@@ -24,8 +24,10 @@ class Float_Array : public Array {
     // Adds the given float to the array.
     void push(float obj);
 
-    // Fills the array with the given value.
-    virtual void fill(float fl);
+    // Sets val as the value for all the elements in the array object.
+    // Does nothing for an empty array
+    // If it's partially filled/full, replace already-existing values with the given value.
+    void fill(float fl);
 
     // Determines whether or not this array contains the obj.
     bool contains(float obj);

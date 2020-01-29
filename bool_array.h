@@ -24,7 +24,9 @@ class Bool_Array : public Array {
     // Adds the given boolean to the array.
     void push(bool b);
 
-    // Fills the array with the given value.
+    // Sets val as the value for all the elements in the array object.
+    // Does nothing for an empty array
+    // If it's partially filled/full, replace already-existing values with the given value.
     void fill(bool b);
 
     // Determines whether or not this array contains the obj.

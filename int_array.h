@@ -24,7 +24,9 @@ class Int_Array : public Array {
     // Adds the given integer to the array.
     void push(int i);
 
-    // Fills the array with the given value.
+    // Sets val as the value for all the elements in the array object.
+    // Does nothing for an empty array
+    // If it's partially filled/full, replace already-existing values with the given value.
     void fill(int i);
 
     // Determines whether or not this array contains the obj.
