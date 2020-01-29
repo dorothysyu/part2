@@ -17,8 +17,8 @@ class String_Array : public Array {
     // Returns the length of the array.
     int get_length();
 
-    // Puts the string at the given index.
-    // Replaces the string that was already there if it exists.
+    // The value at the given index will now be the given string. 
+    // Does nothin the string if the given index is out of bounds of the array.
     void put(int idx, String* str);
 
     // Adds the given string to the array.

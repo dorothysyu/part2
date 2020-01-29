@@ -15,8 +15,8 @@ public:
     // Returns the length of the array.
     virtual int get_length();
 
-    // Puts the object at the given index.
-    // Replaces the object that was already there if it exists.
+    // The value at the given index will now be the given obj. 
+    // Does nothin the string if the given index is out of bounds of the array.
     virtual void put(int idx, Object* obj);
 
     // Adds the given object to the array.

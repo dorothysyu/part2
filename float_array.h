@@ -17,8 +17,8 @@ class Float_Array : public Array {
     // Returns the length of the array.
     int get_length();
 
-    // Puts the float at the given index.
-    // Replaces the float that was already there if it exists.
+    // The value at the given index will now be the given float. 
+    // Does nothin the string if the given index is out of bounds of the array.
     void put(int i, float fl);
 
     // Adds the given float to the array.

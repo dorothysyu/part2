@@ -17,8 +17,8 @@ class Int_Array : public Array {
     // Returns the length of the array.
     int get_length();
 
-    // Puts the integer at the given index.
-    // Replaces the integer that was already there if it exists.
+    // The value at the given index will now be the given int. 
+    // Does nothin the string if the given index is out of bounds of the array.
     void put(int idx, int i);
 
     // Adds the given integer to the array.

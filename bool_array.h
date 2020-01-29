@@ -17,8 +17,8 @@ class Bool_Array : public Array {
     // Returns the length of the array.
     int get_length();
 
-    // Puts the boolean at the given index.
-    // Replaces the boolean that was already there if it exists.
+    // The value at the given index will now be the given boolean. 
+    // Does nothin the string if the given index is out of bounds of the array.
     void put(int idx, bool b);
 
     // Adds the given boolean to the array.
