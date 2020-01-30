@@ -1,4 +1,5 @@
 //lang::CwC
+#pragma once
 #include "object.h"
 class Array : public Object{
 public:
