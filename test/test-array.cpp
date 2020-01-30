@@ -14,6 +14,8 @@
   ASSERT_EQ((a),false);
 #define CS4500_ASSERT_EXIT_ZERO(a)  \
   ASSERT_EXIT(a(), ::testing::ExitedWithCode(0), ".*");
+#define CS4500_ASSERT_DEATH(a)  \
+  ASSERT_DEATH((a), ".*");
 
 void testArrayCreation() {
     Array* a1 = new Array(5);
@@ -94,6 +96,28 @@ void testStringSize() {
     CS4500_ASSERT_TRUE(hello_world2->size()==11);
 }
 
+void testAt() {
+    Bool_Array* a1 = new Bool_Array(1);
+    a1->put(0, 1);
+    CS4500_ASSERT_TRUE(a1->at(0) == 1);
+    CS4500_ASSERT_DEATH(a1->at(1));
+    Int_Array* a2 = new Int_Array(2);
+    a2->put(0, 30);
+    a2->put(1, 40);
+    CS4500_ASSERT_TRUE(a2->at(0) == 30);
+    CS4500_ASSERT_TRUE(a2->at(1) == 40);
+    CS4500_ASSERT_DEATH(a2->at(2));
+    Float_Array* a3 = new Float_Array(1);
+    a3->put(0, 1.00);
+    CS4500_ASSERT_TRUE(a3->at(0) == 1.00);
+    CS4500_ASSERT_DEATH(a3->at(1));
+    String_Array* a4 = new String_Array(1);
+    String* hi = new String("hi");
+    a4->put(0, hi);
+    CS4500_ASSERT_TRUE(a4->at(0) == hi);
+    CS4500_ASSERT_DEATH(a4->at(1));
+}
+
 int main()
 {
     testArrayCreation();
@@ -104,5 +128,6 @@ int main()
     testHash();
     testString();
     testStringSize();
+    testAt();
     return 0;
 }

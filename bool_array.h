@@ -12,6 +12,7 @@ class Bool_Array : public Array {
     ~Bool_Array();
 
     // Returns the element at the given index.
+    // Terminates the program if given idx is out of bounds.
     bool at(int i);
 
     // Returns the length of the array.

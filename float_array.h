@@ -12,6 +12,7 @@ class Float_Array : public Array {
     ~Float_Array();
 
     // Returns the element at the given index.
+    // Terminates the program if given index is out of bounds.
     float at(int i);
 
     // Returns the length of the array.

@@ -10,6 +10,7 @@ public:
     virtual ~Array();
 
     // Returns the element at the given index.
+    // Terminates the program if given index is out of bounds.
     Object* at(int i);
 
     // Returns the length of the array.
