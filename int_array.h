@@ -12,6 +12,7 @@ class Int_Array : public Array {
     ~Int_Array();
 
     // Returns the element at the given index.
+    // Terminates the program if given index is out of bounds.
     int at(int i);
 
     // Returns the length of the array.

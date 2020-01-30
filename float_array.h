@@ -20,7 +20,7 @@ class Float_Array : public Array {
 
     // The value at the given index will now be the given float. 
     // Does nothin the string if the given index is out of bounds of the array.
-    void put(int i, float fl);
+    void put(int idx, float fl);
 
     // Adds the given float to the array.
     void push(float obj);
