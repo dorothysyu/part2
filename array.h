@@ -24,10 +24,10 @@ public:
     // Adds the given object to the array.
     virtual void push(Object* obj);
 
-    // Sets val as the value for all the elements in the array object.
+    // Creates copies of the object and sets val as the value for all the elements in the array object.
     // Does nothing for an empty array
     // If it's partially filled/full, replace already-existing values with the given value.
-    // Creates a deep copy of the object.
+
     virtual void fill(Object* val);
 
     // Determines whether or not this array contains the obj.
