@@ -25,6 +25,10 @@ void testArrayCreation() {
     exit(0);
 }
 
+TEST(W1, testArrayCreation) {
+  CS4500_ASSERT_EXIT_ZERO(testArrayCreation);
+}
+
 void testGrowth() {
     Array* a1 = new Array(1);
     Object* obj = new Object();
@@ -34,6 +38,11 @@ void testGrowth() {
     a1->push(obj);
     a1->push(obj);
     CS4500_ASSERT_TRUE(a1->get_length() > 1);
+    exit(0);
+}
+
+TEST(W1, testGrowth) {
+  CS4500_ASSERT_EXIT_ZERO(testGrowth);
 }
 
 void testLength(){
@@ -45,6 +54,11 @@ void testLength(){
     a2->fill(y);
     CS4500_ASSERT_TRUE(a1->get_length() == 2);
     CS4500_ASSERT_TRUE(a2->get_length() == 3);
+    exit(0);
+}
+
+TEST(W1, testLength) {
+  CS4500_ASSERT_EXIT_ZERO(testLength);
 }
 
 void testAccessElements() {
@@ -58,6 +72,11 @@ void testAccessElements() {
     a2->put(0, 1.0);
     CS4500_ASSERT_TRUE(a2->at(0) == 1.0);
     CS4500_ASSERT_TRUE(a2->contains(1.0));
+    exit(0);
+}
+
+TEST(W1, testAccessElements) {
+  CS4500_ASSERT_EXIT_ZERO(testAccessElements);
 }
 
 void testArrayEquality() {
@@ -69,6 +88,11 @@ void testArrayEquality() {
     a2->fill(t);
     CS4500_ASSERT_TRUE(a1->hash()==a2->hash());
     CS4500_ASSERT_TRUE(a1->equals(a2));
+    exit(0);
+}
+
+TEST(W1, testArrayEquality) {
+  CS4500_ASSERT_EXIT_ZERO(testArrayEquality);
 }
 
 void testHash() {
@@ -77,6 +101,11 @@ void testHash() {
     String* f2 = new String("f");
     CS4500_ASSERT_TRUE(obj1->hash()==obj1->hash());
     CS4500_ASSERT_TRUE(f->hash()==f2->hash());
+    exit(0);
+}
+
+TEST(W1, testHash) {
+  CS4500_ASSERT_EXIT_ZERO(testHash);
 }
 
 void testString() {
@@ -87,6 +116,11 @@ void testString() {
     CS4500_ASSERT_TRUE(g->concat(h)->equals(gh));
     CS4500_ASSERT_TRUE(g->cmp(g) == 0);
     CS4500_ASSERT_TRUE(g->cmp(h) < 0);
+    exit(0);
+}
+
+TEST(W1, testString) {
+  CS4500_ASSERT_EXIT_ZERO(testString);
 }
 
 void testStringSize() {
@@ -94,6 +128,11 @@ void testStringSize() {
     String* hello_world2 = new String(hello_world);
     CS4500_ASSERT_TRUE(hello_world->size()==11);
     CS4500_ASSERT_TRUE(hello_world2->size()==11);
+    exit(0);
+}
+
+TEST(W1, testStringSize) {
+  CS4500_ASSERT_EXIT_ZERO(testStringSize);
 }
 
 void testAt() {
@@ -116,18 +155,15 @@ void testAt() {
     a4->put(0, hi);
     CS4500_ASSERT_TRUE(a4->at(0) == hi);
     CS4500_ASSERT_DEATH(a4->at(1));
+    exit(0);
 }
 
-int main()
-{
-    testArrayCreation();
-    testGrowth();
-    testLength();
-    testAccessElements();
-    testArrayEquality();
-    testHash();
-    testString();
-    testStringSize();
-    testAt();
-    return 0;
+TEST(W1, testAt) {
+  CS4500_ASSERT_EXIT_ZERO(testAt);
+}
+
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
