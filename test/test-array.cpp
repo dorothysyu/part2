@@ -139,29 +139,61 @@ void testAt() {
     Bool_Array* a1 = new Bool_Array(1);
     a1->put(0, 1);
     CS4500_ASSERT_TRUE(a1->at(0) == 1);
-    CS4500_ASSERT_DEATH(a1->at(1));
     Int_Array* a2 = new Int_Array(2);
     a2->put(0, 30);
     a2->put(1, 40);
     CS4500_ASSERT_TRUE(a2->at(0) == 30);
     CS4500_ASSERT_TRUE(a2->at(1) == 40);
-    CS4500_ASSERT_DEATH(a2->at(2));
     Float_Array* a3 = new Float_Array(1);
     a3->put(0, 1.00);
     CS4500_ASSERT_TRUE(a3->at(0) == 1.00);
-    CS4500_ASSERT_DEATH(a3->at(1));
     String_Array* a4 = new String_Array(1);
     String* hi = new String("hi");
     a4->put(0, hi);
     CS4500_ASSERT_TRUE(a4->at(0) == hi);
-    CS4500_ASSERT_DEATH(a4->at(1));
     exit(0);
 }
-
-TEST(W1, testAt) {
-  CS4500_ASSERT_EXIT_ZERO(testAt);
+void testBoolAtFail() {
+    Bool_Array* a1 = new Bool_Array(1);
+    a1->put(0, 1);
+    a1->at(1);
 }
 
+TEST(W1, testBoolAtFail) {
+  CS4500_ASSERT_DEATH(testBoolAtFail);
+}
+
+void testIntAtFail() {
+    Int_Array* a2 = new Int_Array(2);
+    a2->put(0, 30);
+    a2->put(1, 40);
+    a2->at(2);
+}
+
+TEST(W1, testIntAtFail) {
+  CS4500_ASSERT_DEATH(testIntAtFail);
+}
+
+void testFloatAtFail() {
+    Float_Array* a3 = new Float_Array(1);
+    a3->put(0, 1.00);
+    a3->at(1);
+}
+
+TEST(W1, testFloatAtFail) {
+  CS4500_ASSERT_DEATH(testFloatAtFail);
+}
+
+void testStringAtFail() {
+    String_Array* a4 = new String_Array(1);
+    String* hi = new String("hi");
+    a4->put(0, hi);
+    a4->at(1);
+}
+
+TEST(W1, testStringAtFail) {
+  CS4500_ASSERT_DEATH(testStringAtFail);
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
