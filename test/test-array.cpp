@@ -48,8 +48,8 @@ TEST(W1, testGrowth) {
 void testLength(){
     String_Array* a1 = new String_Array(2);
     String_Array* a2 = new String_Array(3);
-    String* x = new String(new char[1]);
-    String* y = new String(new char[2]);
+    String* x = new String("x");
+    String* y = new String("y");
     a1->fill(x);
     a2->fill(y);
     CS4500_ASSERT_TRUE(a1->get_length() == 2);
