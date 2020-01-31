@@ -10,16 +10,8 @@ public:
     // Default deconstructor.
     virtual ~Array();
 
-    // Returns the element at the given index.
-    // Terminates the program if given index is out of bounds.
-    Object* at(int i);
-
     // Returns the length of the array.
     virtual int get_length();
-
-    // The value at the given index will now be the given obj. 
-    // Does nothin the string if the given index is out of bounds of the array.
-    virtual void put(int idx, Object* obj);
 
     // Adds the given object to the array.
     virtual void push(Object* obj);
