@@ -20,8 +20,8 @@
 void testArrayCreation() {
     Array* a1 = new Array(5);
     Array* a2 = new Array(10);
-    CS4500_ASSERT_TRUE(a1->get_length()==5);
-    CS4500_ASSERT_TRUE(a2->get_length()==10);
+    CS4500_ASSERT_TRUE(a1->get_length()==0);
+    CS4500_ASSERT_TRUE(a2->get_length()==0);
     exit(0);
 }
 
@@ -32,7 +32,7 @@ TEST(W1, testArrayCreation) {
 void testGrowth() {
     Array* a1 = new Array(1);
     Object* obj = new Object();
-    CS4500_ASSERT_TRUE(a1->get_length() == 1);
+    CS4500_ASSERT_TRUE(a1->get_length() == 0);
     a1->push(obj);
     a1->push(obj);
     a1->push(obj);
